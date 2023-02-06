@@ -1,0 +1,28 @@
+
+.text-center{
+    color: white;
+   }
+   
+   
+   .jumbotron {
+       border-radius: 0;
+       padding: 40px;
+       background-color: tomato;
+   }
+   
+   .employee-card{
+       box-shadow: 5px 5px 5px gray;
+       margin: 1.5rem;
+       border: 2px;
+       padding: 10px;
+      
+   }
+   .card-body{
+       background-color:rgb(240, 240, 240);
+       padding: 10px;
+         
+   }
+   .card-header{
+       background-color: rgb(43, 61, 226);
+       color:aliceblue;
+   }
