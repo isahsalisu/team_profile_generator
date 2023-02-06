@@ -177,4 +177,75 @@ inquirer
         return false;
       },
     },
-  ])
+
+    // This line starts a promise that will run when the previous promise (the one that prompts the user for manager information) is resolved.
+
+  ]).then((managerAnswer) => {
+    completeTeamMembers.push(
+        // This line pushes a new instance of the Manager class to the completeTeamMembers array. The properties of the Manager instance are passed in as arguments, which come from the managerAnswer object that was returned by the previous promise.
+
+      new Manager(
+        managerAnswer.managerName,managerAnswer.managerId,managerAnswer.managerEmail,managerAnswer.managerOfficeNumber
+           
+      )
+    );
+
+    addEmployee();
+  });
+
+const completeTeamProcess = () => {
+  fs.writeFileSync(outputPath, render( completeTeamMembers), "utf-8");
+};
+
+//choose emplyee type
+const addEmployee = () => {
+  inquirer
+    .prompt({
+      type: "list",
+      name: "addEmployeeType",
+      message: "Choose an employee type?",
+      choices: ["Engineer", "Intern", "Form team"],
+    })
+    .then(({ addEmployeeType }) => {
+      if (addEmployeeType === "Engineer") {
+        inquirer.prompt(engineerQuestion).then((engineerAnswer) => {
+          if (
+            // This line checks if any of the required fields in the engineerAnswer object are missing, and if so, logs an error message to the console and calls the addEmployee function again.
+
+            !engineerAnswer.name || !engineerAnswer.id || !engineerAnswer.email || !engineerAnswer.github
+
+          ) 
+          {
+            console.error("All the fields must be filled");
+            return addEmployee();
+          }
+          completeTeamMembers.push(
+            new Engineer(
+              engineerAnswer.name, engineerAnswer.id, engineerAnswer.email,  engineerAnswer.github
+        
+            )
+          );
+          addEmployee();
+        });
+      } else if (addEmployeeType === "Intern") {
+        inquirer.prompt(internQuestion).then((internAnswer) => {
+          if (
+            !internAnswer.name || !internAnswer.id ||  !internAnswer.email || !internAnswer.school 
+          )
+           {
+            console.error("All the fields must be filled");
+            return addEmployee();
+          }
+          completeTeamMembers.push(
+            new Intern(
+              internAnswer.name, internAnswer.id, internAnswer.email,internAnswer.school
+                
+            )
+          );
+          addEmployee();
+        });
+      } else if (addEmployeeType === "Form team") {
+        completeTeamProcess();
+      }
+    });
+};
