@@ -125,7 +125,7 @@ const internQuestion = [
   },
 ];
 
-// type manager create, and then choose member type
+// This section prompts manager create, and then choose members type
 const  completeTeamMembers = [];
 console.log("\n--------Please generate the Team Profile--------\n *** Ensure you input the correct details! ***\n");
 
@@ -197,7 +197,7 @@ const completeTeamProcess = () => {
   fs.writeFileSync(outputPath, render( completeTeamMembers), "utf-8");
 };
 
-//choose emplyee type
+//to select emplyee type
 const addEmployee = () => {
   inquirer
     .prompt({
