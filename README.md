@@ -12,11 +12,14 @@ node index.js
 ```md
 As a manager, I want to generate a webpage that displays my team's basic info so I can have quick access to their emails and GitHub profiles.
 ````
+
+## Navigation
+
 * [Output](#output)
 * [Usage](#usage)
-* [Testing](#testing)
+* [Functionality](#functionality)
 * [Credits](#credits)
-* [Licence](#licence)
+* [License](#license)
 
 ## Functionality
 
@@ -61,7 +64,6 @@ https://1drv.ms/v/s!AnqK_lD30t_EgQmsN96_36ruSPTt
 
 ![Screenshoot of team file generated](./images/html.png)
 
-![]()
 
 ## Classes
 
@@ -99,11 +101,7 @@ The application uses classes for each team member provided:
 
 
 
-
-
-
-
-# License
+## License
 
 
 This project is licensed under the MIT License.
